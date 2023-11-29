@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}在庫管理ツール{% endblock %}
+
+{% block content %}
+
+{% include 'header.html' %}
+
+
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    {% if user.is_authenticated %}
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h4 fw-bolder">在庫登録</h2>
+                        <p>品番、品名、個数を入力して在庫の登録が行えます。</p>
+                        <a class="text-decoration-none" href="{% url 'inventory:post' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h4 fw-bolder">在庫閲覧</h2>
+                        <p>登録済みの在庫を閲覧します。品番か品名での絞り込み、指定した期間内に登録された在庫を抽出することも可能です。</p>
+                        <a class="text-decoration-none" href="{% url 'inventory:reading' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h4 fw-bolder">ログアウト</h2>
+                        <p>ログアウトが出来ます。</p>
+                        <a class="text-decoration-none" href="{% url 'accounts:logout' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    {% else %}
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h4 fw-bolder">在庫登録</h2>
+                        <p>品番、品名、個数を入力して在庫の登録が行えます。</p>
+                        <a class="text-decoration-none" href="{% url 'accounts:login' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h4 fw-bolder">在庫閲覧</h2>
+                        <p>登録済みの在庫を閲覧します。</p>
+                        <a class="text-decoration-none" href="{% url 'accounts:login' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h4 fw-bolder">ログイン</h2>
+                        <p>ログインが出来ます。</p>
+                        <a class="text-decoration-none" href="{% url 'accounts:login' %}">
+                            実行する
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
